@@ -1,5 +1,3 @@
-# terraform-confluent-kafka
-
 # Terraform Project
 
 This Terraform project manages infrastructure resources for different environments using infrastructure as code (IaC). The project is structured to support development (`dev`), staging (`stg`), and production (`prod`) environments, as well as reusable modules and global configurations.

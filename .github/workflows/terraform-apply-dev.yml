@@ -1,0 +1,28 @@
+name: Terraform Apply - Dev
+
+on:
+  workflow_run:
+    workflows: ["Terraform Plan - Dev"]
+    types:
+      - completed
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        tf_version: 1.1.0
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: dev  # Specify the environment directory
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: dev  # Specify the environment directory
